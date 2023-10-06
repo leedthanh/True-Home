@@ -2,61 +2,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Your Retirement Home Maps</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Retirement Home Maps</title>
-    
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
     <!-- Include Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+      text-align: center;
+        }
+        #header a {
+            color: white;
+        }
+        
+        .filter-group {
+            margin: 0 10px; 
+        }
+        .filter-group-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .centered-link a {
+            color: white;
+        }
+        .centered-link {
+            text-align: center;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+        }
 
-    <!-- This is the basic code feel free to add more styles -->
-
+        #map-id {
+            margin: 40px;
+            padding: 0;
+            width: 90%;
+        }
+    </style>
 </head>
-<body>   
-    <div id="header"></div>
+<body>
+    <div id="header"></div><br>
 
     <div class="container">
         <div class="row">
             <div class="col-md-10">
+					<div class="content">
                 <h2>Come Home To Exceptional Senior Living.</h2>
-
+            </div>
+        </div><br>
+        <div class="filter-group-container">
+            <div class="filter-group text-left">
+                <label for="rating-filter">Filter by Rating:</label>
+                <select id="rating-filter">
+                    <option value="">Show All Ratings</option>
+                    <option value="1.0">1.0</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.0">3.0</option>
+                    <option value="4.0">4.0</option>
+                    <option value="5.0">5.0</option>
+                </select>
+            </div>
+    
+            <div class="filter-group text-left">
+                <label for="state-filter">Filter by Location:</label>
+                <select id="state-filter">
+                    <option value="">Show All States</option>
+                </select>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="filter-group text-left">
-                    <label for="rating-filter">Filter by Rating:</label>
-                    <select id="rating-filter">
-                        <option value="">Show All Ratings</option>
-                        <option value="1.0">1.0</option>
-                        <option value="2.0">2.0</option>
-                        <option value="3.0">3.0</option>
-                        <option value="4.0">4.0</option>
-                        <option value="5.0">5.0</option>
-                    </select>
-                </div><br>
-            </div>
-            <div class="col-md-6">
-                <div class="filter-group text-right">
-                    <label for="state-filter">Filter by Location:</label>
-                    <select id="state-filter">
-                        <option value="">Show All States</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 text-center">
-                <!-- Center the map -->
-                <div id="map-id" style="height: 550px; width: 95%;"></div><br>
-                <li><a href="index.html" class="button">Take Me Home</a></li>
-
-            </div>
-        </div>
-       
+    
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <!-- Center the map -->
+                        <div id="map-id" style="height: 550px; width: 95%;"></div>
+                        <div class="centered-link">
+                            <li><a href="index.html" class="button">Take Me Homep</a></li>
     <!-- Include Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <!-- Include your custom JavaScript file (if it's in the same directory as this HTML file) -->
     <script type="text/javascript" src="assets/js/interactive.js"></script><br>
 
     <script type="text/javascript" src="assets/js/navigation.js"></script>
