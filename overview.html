@@ -2,14 +2,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
   <title>Combined Visualizations</title>
   <!-- Include necessary CSS and JavaScript libraries -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <style>
+    body {
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+    #header a {
+        color: white;
+    }
+    #header {
+      text-align: center;
+    }
+    #map {
+            margin: 50px;
+            padding: 0;
+            width: 90%;
+    }
+    h3 {
+            text-align: center;
+        }
+
+    h1 {
+      text-align: center;
+    }    
+
+    .centered-link {
+            text-align: center;
+        }
+
+        /* Style the "Take Me Home" link to be white */
+        .centered-link a {
+            color: white;
+        }
+    </style> 
+
 </head>
 <body>
+  
   <div id="header"></div>
   <div class="container">
     <div id="header"></div>
@@ -18,25 +58,28 @@
       <div class="row">
         <div class="col-md-12 jumbotron text-center">
             <h1>Your Journey to Peaceful Retirement Begins Here.</h1>
-            <li><a href="index.html" class="button">Take Me Home</a></li>
+            <!-- <li><a href="index.html" class="button">Take Me Home</a></li> -->
 
-            <p>Use the interactive map below to create a home for a lifetime of memories.</p>
+            <h3>Use the heat map to see the total numbers of providers.</h3>
 
         </div>
     </div>
 
     <!-- Visualization 2: Map -->
-            <div id="map" style="height: 500px; width: 88%"></div>
+            <div id="map" style="height: 500px; width: 90%"></div>
         </div>
     </div>
+<br>
+<div class="centered-link">
+  <li><a href="homes.html" class="button">Take Me To Interactive Map</a></li>
+</div>
 
  <!-- Jumbotron Section -->
  <div class="row">
   <div class="col-md-12 jumbotron text-center">
       <h1>Embrace the Golden Years with Us!</h1>
-      <li><a href="index.html" class="button">Take Me Home</a></li>
-
-      <p>Find The State Where Comfort and Care Meet Your Retirement Dreams</p>
+      
+      <h3>States with the most 5 stars overall-rating providers</h3>
 
   </div>
 </div>
@@ -46,7 +89,12 @@
 <canvas id="providerStateChart" width="600" height="200"></canvas>
 </div>
 </div>
-     
+     <br>
+     <div class="centered-link">
+      <li><a href="index.html" class="button">Take Me Home</a></li>
+  </div>
+    
+
 
       <!-- Additional Visualizations -->
       
