@@ -26,7 +26,7 @@ async function fetchJsonDataAndCreateChart(url) {
         const labels = Object.keys(stateCounts);
         const data = Object.values(stateCounts);
         
-        new Chart(barchart, {
+        new Chart("providerStateChart", {
           type: 'bar',
           data: {
             labels: labels,
@@ -38,19 +38,20 @@ async function fetchJsonDataAndCreateChart(url) {
               borderWidth: 1        
             }]
           },
-          options: { // Use "options" instead of "scales"
+          options: {
+            indexAxis: 'y', // Set the axis to vertical (y-axis)
             scales: {
               y: {
                 beginAtZero: true,
                 title: {
                   display: true,
-                  text: 'Total numbers of 5 stars nursing homes'      
+                  text: 'State'
                 }
               },
               x: {
                 title: {
                   display: true,
-                  text: 'State'
+                  text: 'Total numbers of 5 stars nursing homes'
                 }
               }
             }
@@ -128,7 +129,7 @@ const stateProviderCounts = {};
 const stateProviderNames = {};
 
 // Create a Leaflet map centered on the US
-const map = L.map('map').setView([37.8, -96], 4);
+const map = L.map('map').setView([37.8, -96], 3);
 
 // Add a base map layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -137,11 +138,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Define a color scale
 const colorScale = d3.scaleLinear()
-  .domain([0, 8]) // Adjust the domain as needed
+  .domain([0, 4]) // Adjust the domain as needed
   .range([
     "blue",
     "red",
-    "white"
   ]);
 // Fetch the data from the specified URL
 fetch(Url)
@@ -187,9 +187,9 @@ fetch(Url)
             const percentage = feature.properties.ProviderPercentage;
             return {
               fillColor: colorScale(percentage),
-              fillOpacity: 0.7,
+              fillOpacity: 0.5,
               color: 'white',
-              weight: 2
+              weight: 1
             };
           },
           onEachFeature: function (feature, layer) {
