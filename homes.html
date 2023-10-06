@@ -43,9 +43,9 @@
         }
 
         #map-id {
-            margin: 40px;
+            margin: 0px;
             padding: 0;
-            width: 90%;
+            width: 100%;
         }
     </style>
 </head>
@@ -71,19 +71,26 @@
                     <option value="5.0">5.0</option>
                 </select>
             </div>
-    
+            <div class="filter-group-container">
             <div class="filter-group text-left">
-                <label for="state-filter">Filter by Location:</label>
+                <label for="state-filter">Filter by States:</label>
                 <select id="state-filter">
                     <option value="">Show All States</option>
                 </select>
             </div>
         </div>
-    
+        <div class="filter-group-container">
+        <div class="filter-group text-right">
+            <label for="location-search-input">Search by City:</label>
+            <input type="text" id="location-search-input" placeholder="Enter Location">
+            <button id="location-search-button">Search</button>
+        </div>
+    </div>
+</div>
                 <div class="row">
                     <div class="col-md-2 text-center">
                         <!-- Center the map -->
-                        <div id="map-id" style="height: 550px; width: 95%;"></div>
+                        <div id="map-id" style="height: 550px; width: 100%;"></div>
                         <div class="centered-link">
                             <li><a href="index.html" class="button">Take Me Homep</a></li>
     <!-- Include Leaflet JavaScript -->
