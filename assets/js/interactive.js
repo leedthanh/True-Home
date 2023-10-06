@@ -1,5 +1,7 @@
 
-const htown_map = L.map('map-id').setView([37.8, -96], 3.5);
+
+
+const htown_map = L.map('map-id').setView([29.749907, -95.358421], 4);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -118,7 +120,3 @@ fetch('https://leedthanh.github.io/api/all_nursing_homes.geojson')
             }
         });
     });
-    
- //Search function
-
- 
