@@ -7,6 +7,60 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(htown_map);
 
+const stateAbbreviationToName = {
+
+    "AL": "Alabama",
+    "AK": "Alaska",
+    "AZ": "Arizona",
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
+    "DE": "Delaware",
+    "FL": "Florida",
+    "GA": "Georgia",
+    "HI": "Hawaii",
+    "ID": "Idaho",
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "IA": "Iowa",
+    "KS": "Kansas",
+    "KY": "Kentucky",
+    "LA": "Louisiana",
+    "ME": "Maine",
+    "MD": "Maryland",
+    "MA": "Massachusetts",
+    "MI": "Michigan",
+    "MN": "Minnesota",
+    "MS": "Mississippi",
+    "MO": "Missouri",
+    "MT": "Montana",
+    "NE": "Nebraska",
+    "NV": "Nevada",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NM": "New Mexico",
+    "NY": "New York",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "OH": "Ohio",
+    "OK": "Oklahoma",
+    "OR": "Oregon",
+    "PA": "Pennsylvania",
+    "RI": "Rhode Island",
+    "SC": "South Carolina",
+    "SD": "South Dakota",
+    "TN": "Tennessee",
+    "TX": "Texas",
+    "UT": "Utah",
+    "VT": "Vermont",
+    "VA": "Virginia",
+    "WA": "Washington",
+    "WV": "West Virginia",
+    "WI": "Wisconsin",
+    "WY": "Wyoming"
+  };
+
 const uniqueStates = [];
 
 fetch('https://leedthanh.github.io/api/all_nursing_homes.geojson')
@@ -18,13 +72,14 @@ fetch('https://leedthanh.github.io/api/all_nursing_homes.geojson')
                 uniqueStates.push(state);
             }
         });
+        
 
         // Create state filter ID and do a loop for unique states
         const stateFilter = document.getElementById('state-filter');
         uniqueStates.forEach(state => {
             const option = document.createElement('option');
             option.value = state;
-            option.textContent = state;
+            option.textContent = stateAbbreviationToName[state] || state; // Use the mapping or original abbreviation
             stateFilter.appendChild(option);
         });
 
@@ -49,7 +104,7 @@ fetch('https://leedthanh.github.io/api/all_nursing_homes.geojson')
                             const providerState = feature.properties["Provider State"];
                             const overallRating = parseFloat(feature.properties["Overall Rating"]);
                             // Checking both state and rating filters
-                            const stateMatch = selectedState === "" || providerState === selectedState;
+                            const stateMatch = selectedState === "" || providerState === selectedState || stateAbbreviationToName[providerState] === selectedState;
                             const rateMatch = selectRating === "" || overallRating === parseFloat(selectRating);
 
                             return stateMatch && rateMatch;
@@ -119,4 +174,47 @@ fetch('https://leedthanh.github.io/api/all_nursing_homes.geojson')
                 updateMap(stateSelected, this.value);
             }
         });
+    });
+
+    //SEARCH FUNCTION
+    
+    function searchCity(city) {
+        // Clear existing markers
+        htown_map.eachLayer(layer => {
+            if (layer instanceof L.Marker) {
+                htown_map.removeLayer(layer);
+            }
+        });
+    
+        // Fetch data and filter by city
+        fetch('https://leedthanh.github.io/api/all_nursing_homes.geojson')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    filter: function (feature) {
+                        const location = feature.properties["Location"];
+                        return location.toLowerCase().includes(city.toLowerCase());
+                    },
+                    onEachFeature: function (feature, layer) {
+                        const popupContent = `
+                            <b>Provider Name:</b> ${feature.properties["Provider Name"]}<br>
+                            <b>Phone Number:</b> ${feature.properties["Provider Phone Number"]}<br>
+                            <b>Rating:</b> ${feature.properties["Overall Rating"]}<br>
+                            <b>Location:</b> ${feature.properties["Location"]}
+                        `;
+                        layer.bindPopup(popupContent);
+                    }
+                }).addTo(htown_map);
+            });
+    }
+    
+    // Add event listener to the search button
+    const locationSearchButton = document.getElementById('location-search-button');
+    const locationSearchInput = document.getElementById('location-search-input');
+    
+    locationSearchButton.addEventListener('click', function () {
+        const cityToSearch = locationSearchInput.value;
+        if (cityToSearch.trim() !== "") {
+            searchCity(cityToSearch);
+        }
     });
