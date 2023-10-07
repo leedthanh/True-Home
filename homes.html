@@ -41,6 +41,16 @@
         h2 {
             text-align: center;
         }
+        #map-container {
+            height: 88%;
+            width: 88%;
+            margin: 5%
+        }
+
+        #map {
+            height: 90%;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -83,11 +93,13 @@
 </div>
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <!-- Center the map -->
-                        <div id="map-id" style="height: 550px; width: 100%;"></div>
+                        <div id="map-container">
+                            <div id="map-id" style="height: 550px; width: 100%;"></div>
+                        <br><br>
 
                         <div class="centered-link">
-                            <li><a href="index.html" class="button">Take Me Homep</a></li>
+                            <div id="footer"></div>
+                            
     <!-- Include Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script type="text/javascript" src="assets/js/interactive.js"></script><br>
