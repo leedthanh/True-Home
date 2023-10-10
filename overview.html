@@ -69,7 +69,7 @@
         }
 
         #map {
-            height: 90%;
+            height: 100%;
             width: 100%;
         }
     </style> 
@@ -84,7 +84,7 @@
       <!-- Jumbotron Section -->
       <div class="row">
         <div class="col-md-12 jumbotron text-center">
-            <h1>Your Journey to Peaceful Retirement Begins Here.</h1>
+            <h1 id="slogan">Your Journey to Peaceful Retirement Begins Here.</h1>
             <!-- <li><a href="index.html" class="button">Take Me Home</a></li> -->
 
             <h3>Use the heat map to see the total numbers of providers.</h3>
@@ -129,6 +129,41 @@
   
   <script type="text/javascript" src="assets/js/navigation.js"></script>
   
+
+  <script>
+    // Array of slogans
+    const slogan = [
+        "Discover the Comfort of Senior Living",
+        "Your Loved One's Well-Being Matters Most",
+        "Navigating the Path to Retirement Bliss",
+        "Come Home To Exceptional Senior Living"
+        // Add more slogans here
+    ];
+
+    // Index to keep track of the currently displayed slogan
+    let currentSloganIndex = 0;
+
+    // Function to update the displayed slogan
+    function updateSlogan() {
+        // Get the slogan element by its ID
+        const sloganElement = document.getElementById('slogan');
+
+        // Update the slogan text
+        sloganElement.textContent = slogan[currentSloganIndex];
+
+        // Increment the index for the next slogan
+        currentSloganIndex++;
+
+        // If we've reached the end of the slogans, loop back to the beginning
+        if (currentSloganIndex >= slogan.length) {
+            currentSloganIndex = 0;
+        }
+    }
+
+    // Set an interval to update the slogan every few seconds (e.g., every 5 seconds)
+    setInterval(updateSlogan, 5000); // Change 5000 to adjust the interval in milliseconds
+</script>
+
 </body>
 
 </html>

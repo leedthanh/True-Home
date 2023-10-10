@@ -38,31 +38,55 @@
             text-align: center;
             color: white;
         }
-        h2 {
+        h3 {
             text-align: center;
         }
+
+        h1 {
+        text-align: center;
+        }    
         #map-container {
-            height: 88%;
-            width: 88%;
+            height: 90%;
+            width: 90%;
             margin: 5%
         }
 
-        #map {
-            height: 90%;
+        #map-id {
+            height: 70vh;
             width: 100%;
         }
+
+        /* Apply specific styles for screens with a max-width of 768px (tablet) */
+        @media (max-width: 768px) {
+            #chart-container {
+                max-width: 400px; /* Adjust the max-width for tablets */
+            }
+        }
+
+        /* Apply specific styles for screens with a max-width of 480px (mobile) */
+        @media (max-width: 480px) {
+            #chart-container {
+                max-width: 300px; /* Adjust the max-width for mobile devices */
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div id="header"></div><br>
-
+    <div id="header"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-					<div class="content">
-                <h2>Come Home To Exceptional Senior Living.</h2>
-            </div>
+      <div id="header"></div>
+               <!-- Jumbotron Section -->
+      <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+            <h1 id="slogan">Your Journey to Peaceful Retirement Begins Here.</h1>
+            <!-- <li><a href="index.html" class="button">Take Me Home</a></li> -->
+
+            <!-- <h3>Use the heat map to see the total numbers of providers.</h3> -->
+
         </div><br>
+
+    </div>
         <div class="filter-group-container">
             <div class="filter-group text-left">
                 <label for="rating-filter">Filter by Rating:</label>
@@ -91,11 +115,9 @@
         </div>
     </div>
 </div>
-                <div class="row">
-                    <div class="col-md-2 text-center">
-                        <div id="map-container">
-                            <div id="map-id" style="height: 550px; width: 100%;"></div>
-                        <br><br>
+<div id="map-container">
+    <div id="map-id"></div>
+    </div>
 
                         <div class="centered-link">
                             <div id="footer"></div>
@@ -105,6 +127,40 @@
     <script type="text/javascript" src="assets/js/interactive.js"></script><br>
 
     <script type="text/javascript" src="assets/js/navigation.js"></script>
+
+    <script>
+        // Array of slogans
+        const slogan = [
+            "Discover the Comfort of Senior Living",
+            "Your Loved One's Well-Being Matters Most",
+            "Navigating the Path to Retirement Bliss",
+            "Come Home To Exceptional Senior Living"
+            // Add more slogans here
+        ];
+
+        // Index to keep track of the currently displayed slogan
+        let currentSloganIndex = 0;
+
+        // Function to update the displayed slogan
+        function updateSlogan() {
+            // Get the slogan element by its ID
+            const sloganElement = document.getElementById('slogan');
+
+            // Update the slogan text
+            sloganElement.textContent = slogan[currentSloganIndex];
+
+            // Increment the index for the next slogan
+            currentSloganIndex++;
+
+            // If we've reached the end of the slogans, loop back to the beginning
+            if (currentSloganIndex >= slogan.length) {
+                currentSloganIndex = 0;
+            }
+        }
+
+        // Set an interval to update the slogan every few seconds (e.g., every 5 seconds)
+        setInterval(updateSlogan, 5000); // Change 5000 to adjust the interval in milliseconds
+    </script>
 
 </body>
 </html>
