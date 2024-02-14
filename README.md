@@ -9,6 +9,14 @@ I embared on this project motivated by a strong desire to help families in findi
 To clean and structure a complex dataset I used Python.  This involved tasks like handling missing values, removie duplicates, and ensuring data accuracy and consistency.  Python's versatility and libraries were instrumental in preparing the dta for further analysis.
 ## ETL with pgAdmin SQL
 I employed pgAdmin SQL for efficient data extraction, transformation and loading (ETL).  SQL queries were used for ETL in a PostreSQL database, ensuring data integrity and acessibility, laying the foundation for the project's next phases.  
+## Building API for Data Accessibility
+I designed and developed a custom API to facilitate secure and efficient data retrieval, enabling seamless sharing of valuable insights with external applications and users.  This pivotal step enhanced the project's functionality and data-driven capabilities.
+## Backend Development
+In the project's back-end developent phase, I utilized the power of JavaScript to create a robust and responsive platform.  JavaScript provided the interactivity and functionality required to support the project's objectives.  
+## Front-end development
+I modified html5 up template to structure web pages and leveraged CSS and Sass to create a visually appealing and consistent styles for the application.  This combination of tecn resulted in a user-friendly interface that seamlessly integrated with the project's data-driven features.
+
+
 
 
 
